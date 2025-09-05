@@ -1,0 +1,156 @@
+[2025-09-05T12:22:47.947-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T17:22:26.420502+00:00 [queued]>
+[2025-09-05T12:22:47.950-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T17:22:26.420502+00:00 [queued]>
+[2025-09-05T12:22:47.950-0500] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-05T12:22:47.956-0500] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): retrain_model> on 2025-09-05 17:22:26.420502+00:00
+[2025-09-05T12:22:47.960-0500] {standard_task_runner.py:57} INFO - Started process 24867 to run task
+[2025-09-05T12:22:47.963-0500] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'movie_sentiment_retrain', 'retrain_model', 'manual__2025-09-05T17:22:26.420502+00:00', '--job-id', '28', '--raw', '--subdir', 'DAGS_FOLDER/retrain_pipeline.py', '--cfg-path', '/var/folders/q5/0d_dg10s4m55__wc3fybh0280000gr/T/tmpnb96rg09']
+[2025-09-05T12:22:47.964-0500] {standard_task_runner.py:85} INFO - Job 28: Subtask retrain_model
+[2025-09-05T12:22:47.978-0500] {task_command.py:416} INFO - Running <TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T17:22:26.420502+00:00 [running]> on host SebastianSamay.local
+[2025-09-05T12:22:47.996-0500] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops-team' AIRFLOW_CTX_DAG_ID='movie_sentiment_retrain' AIRFLOW_CTX_TASK_ID='retrain_model' AIRFLOW_CTX_EXECUTION_DATE='2025-09-05T17:22:26.420502+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-05T17:22:26.420502+00:00'
+[2025-09-05T12:22:47.997-0500] {logging_mixin.py:154} INFO - Proyecto en: /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3
+[2025-09-05T12:22:47.997-0500] {logging_mixin.py:154} INFO - Directorio de trabajo actual: /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3
+[2025-09-05T12:22:47.997-0500] {logging_mixin.py:154} INFO - Iniciando reentrenamiento: logistic_regression_bayesian.pkl
+[2025-09-05T12:28:07.456-0500] {logging_mixin.py:154} INFO - Código de retorno: 1
+[2025-09-05T12:28:07.457-0500] {logging_mixin.py:154} INFO - Salida: Dataset Cargado con Exito!
+                                                  review sentiment
+0      One of the other reviewers has mentioned that ...  positive
+1      A wonderful little production. <br /><br />The...  positive
+2      I thought this was a wonderful way to spend ti...  positive
+3      Basically there's a family where a little boy ...  negative
+4      Petter Mattei's "Love in the Time of Money" is...  positive
+...                                                  ...       ...
+49995  I thought this movie did a down right good job...  positive
+49996  Bad plot, bad dialogue, bad acting, idiotic di...  negative
+49997  I am a Catholic taught in parochial elementary...  negative
+49998  I'm going to have to disagree with the previou...  negative
+49999  No one expects the Star Trek movies to be high...  negative
+
+[50000 rows x 2 columns]
+Limpiando texto...
+Datos de entrenamiento: 40000 muestras
+Datos de prueba: 10000 muestras
+Balance de clases en train: {1: 20000, 0: 20000}
+Inic
+[2025-09-05T12:28:07.458-0500] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/airflow/dags/retrain_pipeline.py", line 171, in retrain_model
+    raise Exception(f"Error en reentrenamiento: {result.stderr}")
+Exception: Error en reentrenamiento: /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/pydantic/_internal/_fields.py:128: UserWarning: Field "model_server_url" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/pydantic/_internal/_config.py:317: UserWarning: Valid config keys have changed in V2:
+* 'schema_extra' has been renamed to 'json_schema_extra'
+  warnings.warn(message, UserWarning)
+2025/09/05 12:23:10 INFO mlflow.tracking.fluent: Experiment with name 'movie_sentiment_bayesian_optimization' does not exist. Creating a new experiment.
+/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/sklearn/pipeline.py:370: UserWarning: Persisting input arguments took 5.45s to run.If this happens often in your code, it can cause performance problems (results will be correct in all cases). The reason for this is probably some large input arguments for a wrapped function.
+  X, fitted_transformer = fit_transform_one_cached(
+Traceback (most recent call last):
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/src/train_bayesian.py", line 100, in train_logistic_regression_bayesian
+    mlflow.log_param(param, value)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/fluent.py", line 598, in log_param
+    return MlflowClient().log_param(run_id, key, value)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/client.py", line 807, in log_param
+    self._tracking_client.log_param(run_id, key, value)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/_tracking_service/client.py", line 301, in log_param
+    raise e
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/_tracking_service/client.py", line 295, in log_param
+    self.store.log_param(run_id, param)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/store/tracking/rest_store.py", line 210, in log_param
+    self._call_endpoint(LogParam, req_body)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/store/tracking/rest_store.py", line 59, in _call_endpoint
+    return call_endpoint(self.get_host_creds(), endpoint, method, json_body, response_proto)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/utils/rest_utils.py", line 202, in call_endpoint
+    response = verify_rest_response(response, endpoint)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/utils/rest_utils.py", line 134, in verify_rest_response
+    raise RestException(json.loads(response.text))
+mlflow.exceptions.RestException: RESOURCE_DOES_NOT_EXIST: Run '9ebf5da2a8444c69a806eed8e9081f67' not found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/src/train_bayesian.py", line 470, in <module>
+    train_logistic_regression_bayesian(X_train, X_test, y_train, y_test)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/src/train_bayesian.py", line 134, in train_logistic_regression_bayesian
+    return bayes_search.best_estimator_, best_params
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/fluent.py", line 183, in __exit__
+    end_run(RunStatus.to_string(status))
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/fluent.py", line 408, in end_run
+    MlflowClient().set_terminated(run.info.run_id, status)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/client.py", line 1857, in set_terminated
+    self._tracking_client.set_terminated(run_id, status, end_time)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/_tracking_service/client.py", line 500, in set_terminated
+    self.store.update_run_info(
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/store/tracking/rest_store.py", line 151, in update_run_info
+    response_proto = self._call_endpoint(UpdateRun, req_body)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/store/tracking/rest_store.py", line 59, in _call_endpoint
+    return call_endpoint(self.get_host_creds(), endpoint, method, json_body, response_proto)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/utils/rest_utils.py", line 202, in call_endpoint
+    response = verify_rest_response(response, endpoint)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/utils/rest_utils.py", line 134, in verify_rest_response
+    raise RestException(json.loads(response.text))
+mlflow.exceptions.RestException: RESOURCE_DOES_NOT_EXIST: Run '9ebf5da2a8444c69a806eed8e9081f67' not found
+
+[2025-09-05T12:28:07.476-0500] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=movie_sentiment_retrain, task_id=retrain_model, execution_date=20250905T172226, start_date=20250905T172247, end_date=20250905T172807
+[2025-09-05T12:28:07.480-0500] {standard_task_runner.py:104} ERROR - Failed to execute job 28 for task retrain_model (Error en reentrenamiento: /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/pydantic/_internal/_fields.py:128: UserWarning: Field "model_server_url" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/pydantic/_internal/_config.py:317: UserWarning: Valid config keys have changed in V2:
+* 'schema_extra' has been renamed to 'json_schema_extra'
+  warnings.warn(message, UserWarning)
+2025/09/05 12:23:10 INFO mlflow.tracking.fluent: Experiment with name 'movie_sentiment_bayesian_optimization' does not exist. Creating a new experiment.
+/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/sklearn/pipeline.py:370: UserWarning: Persisting input arguments took 5.45s to run.If this happens often in your code, it can cause performance problems (results will be correct in all cases). The reason for this is probably some large input arguments for a wrapped function.
+  X, fitted_transformer = fit_transform_one_cached(
+Traceback (most recent call last):
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/src/train_bayesian.py", line 100, in train_logistic_regression_bayesian
+    mlflow.log_param(param, value)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/fluent.py", line 598, in log_param
+    return MlflowClient().log_param(run_id, key, value)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/client.py", line 807, in log_param
+    self._tracking_client.log_param(run_id, key, value)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/_tracking_service/client.py", line 301, in log_param
+    raise e
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/_tracking_service/client.py", line 295, in log_param
+    self.store.log_param(run_id, param)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/store/tracking/rest_store.py", line 210, in log_param
+    self._call_endpoint(LogParam, req_body)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/store/tracking/rest_store.py", line 59, in _call_endpoint
+    return call_endpoint(self.get_host_creds(), endpoint, method, json_body, response_proto)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/utils/rest_utils.py", line 202, in call_endpoint
+    response = verify_rest_response(response, endpoint)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/utils/rest_utils.py", line 134, in verify_rest_response
+    raise RestException(json.loads(response.text))
+mlflow.exceptions.RestException: RESOURCE_DOES_NOT_EXIST: Run '9ebf5da2a8444c69a806eed8e9081f67' not found
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/src/train_bayesian.py", line 470, in <module>
+    train_logistic_regression_bayesian(X_train, X_test, y_train, y_test)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/src/train_bayesian.py", line 134, in train_logistic_regression_bayesian
+    return bayes_search.best_estimator_, best_params
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/fluent.py", line 183, in __exit__
+    end_run(RunStatus.to_string(status))
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/fluent.py", line 408, in end_run
+    MlflowClient().set_terminated(run.info.run_id, status)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/client.py", line 1857, in set_terminated
+    self._tracking_client.set_terminated(run_id, status, end_time)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/tracking/_tracking_service/client.py", line 500, in set_terminated
+    self.store.update_run_info(
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/store/tracking/rest_store.py", line 151, in update_run_info
+    response_proto = self._call_endpoint(UpdateRun, req_body)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/store/tracking/rest_store.py", line 59, in _call_endpoint
+    return call_endpoint(self.get_host_creds(), endpoint, method, json_body, response_proto)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/utils/rest_utils.py", line 202, in call_endpoint
+    response = verify_rest_response(response, endpoint)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/mlflow/utils/rest_utils.py", line 134, in verify_rest_response
+    raise RestException(json.loads(response.text))
+mlflow.exceptions.RestException: RESOURCE_DOES_NOT_EXIST: Run '9ebf5da2a8444c69a806eed8e9081f67' not found
+; 24867)
+[2025-09-05T12:28:07.500-0500] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-09-05T12:28:07.509-0500] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,22 @@
+[2025-09-04T20:32:12.054-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T01:31:30.599260+00:00 [queued]>
+[2025-09-04T20:32:12.057-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T01:31:30.599260+00:00 [queued]>
+[2025-09-04T20:32:12.057-0500] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-04T20:32:12.063-0500] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): retrain_model> on 2025-09-05 01:31:30.599260+00:00
+[2025-09-04T20:32:12.068-0500] {standard_task_runner.py:57} INFO - Started process 30236 to run task
+[2025-09-04T20:32:12.072-0500] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'movie_sentiment_retrain', 'retrain_model', 'manual__2025-09-05T01:31:30.599260+00:00', '--job-id', '93', '--raw', '--subdir', 'DAGS_FOLDER/retrain_pipeline.py', '--cfg-path', '/var/folders/q5/0d_dg10s4m55__wc3fybh0280000gr/T/tmpzzkzze7i']
+[2025-09-04T20:32:12.073-0500] {standard_task_runner.py:85} INFO - Job 93: Subtask retrain_model
+[2025-09-04T20:32:12.089-0500] {task_command.py:416} INFO - Running <TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T01:31:30.599260+00:00 [running]> on host SebastianSamay.local
+[2025-09-04T20:32:12.109-0500] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops-team' AIRFLOW_CTX_DAG_ID='movie_sentiment_retrain' AIRFLOW_CTX_TASK_ID='retrain_model' AIRFLOW_CTX_EXECUTION_DATE='2025-09-05T01:31:30.599260+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-05T01:31:30.599260+00:00'
+[2025-09-04T20:32:12.126-0500] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/airflow/dags/retrain_pipeline.py", line 90, in retrain_model
+    os.chdir(project_dir)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/airflow/movie-sentiment-mlops'
+[2025-09-04T20:32:12.137-0500] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=movie_sentiment_retrain, task_id=retrain_model, execution_date=20250905T013130, start_date=20250905T013212, end_date=20250905T013212
+[2025-09-04T20:32:12.140-0500] {standard_task_runner.py:104} ERROR - Failed to execute job 93 for task retrain_model ([Errno 2] No such file or directory: '/home/airflow/movie-sentiment-mlops'; 30236)
+[2025-09-04T20:32:12.165-0500] {local_task_job_runner.py:228} INFO - Task exited with return code 1
+[2025-09-04T20:32:12.174-0500] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

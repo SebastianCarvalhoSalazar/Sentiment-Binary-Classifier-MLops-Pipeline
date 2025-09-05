@@ -1,0 +1,38 @@
+[2025-09-04T22:35:59.458-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T03:28:39.624602+00:00 [queued]>
+[2025-09-04T22:35:59.461-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T03:28:39.624602+00:00 [queued]>
+[2025-09-04T22:35:59.461-0500] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-04T22:35:59.466-0500] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): retrain_model> on 2025-09-05 03:28:39.624602+00:00
+[2025-09-04T22:35:59.469-0500] {standard_task_runner.py:57} INFO - Started process 43680 to run task
+[2025-09-04T22:35:59.472-0500] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'movie_sentiment_retrain', 'retrain_model', 'manual__2025-09-05T03:28:39.624602+00:00', '--job-id', '160', '--raw', '--subdir', 'DAGS_FOLDER/retrain_pipeline.py', '--cfg-path', '/var/folders/q5/0d_dg10s4m55__wc3fybh0280000gr/T/tmpe3s_ue0p']
+[2025-09-04T22:35:59.473-0500] {standard_task_runner.py:85} INFO - Job 160: Subtask retrain_model
+[2025-09-04T22:35:59.486-0500] {task_command.py:416} INFO - Running <TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T03:28:39.624602+00:00 [running]> on host SebastianSamay.local
+[2025-09-04T22:35:59.506-0500] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops-team' AIRFLOW_CTX_DAG_ID='movie_sentiment_retrain' AIRFLOW_CTX_TASK_ID='retrain_model' AIRFLOW_CTX_EXECUTION_DATE='2025-09-05T03:28:39.624602+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-05T03:28:39.624602+00:00'
+[2025-09-04T22:35:59.507-0500] {logging_mixin.py:154} INFO - Proyecto en: /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3
+[2025-09-04T22:35:59.507-0500] {logging_mixin.py:154} INFO - Directorio de trabajo actual: /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3
+[2025-09-04T22:35:59.507-0500] {logging_mixin.py:154} INFO - Iniciando reentrenamiento: logistic_regression_bayesian.pkl
+[2025-09-04T22:36:10.072-0500] {process_utils.py:131} INFO - Sending Signals.SIGTERM to group 43680. PIDs of all processes in the group: [43681, 43680]
+[2025-09-04T22:36:10.072-0500] {process_utils.py:86} INFO - Sending the signal Signals.SIGTERM to group 43680
+[2025-09-04T22:36:10.072-0500] {taskinstance.py:1632} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-09-04T22:36:10.087-0500] {process_utils.py:79} INFO - Process psutil.Process(pid=43681, status='terminated', started='22:35:59') (43681) terminated with exit code None
+[2025-09-04T22:36:10.083-0500] {taskinstance.py:1937} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/airflow/operators/python.py", line 192, in execute
+    return_value = self.execute_callable()
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/airflow/operators/python.py", line 209, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/airflow/dags/retrain_pipeline.py", line 142, in retrain_model
+    result = subprocess.run(
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 507, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1134, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 1979, in _communicate
+    ready = selector.select(timeout)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+  File "/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/airflow/models/taskinstance.py", line 1634, in signal_handler
+    raise AirflowException("Task received SIGTERM signal")
+airflow.exceptions.AirflowException: Task received SIGTERM signal
+[2025-09-04T22:36:10.097-0500] {taskinstance.py:1400} INFO - Marking task as UP_FOR_RETRY. dag_id=movie_sentiment_retrain, task_id=retrain_model, execution_date=20250905T032839, start_date=20250905T033559, end_date=20250905T033610
+[2025-09-04T22:36:10.101-0500] {standard_task_runner.py:104} ERROR - Failed to execute job 160 for task retrain_model (Task received SIGTERM signal; 43680)
+[2025-09-04T22:36:10.115-0500] {process_utils.py:79} INFO - Process psutil.Process(pid=43680, status='terminated', exitcode=1, started='22:35:59') (43680) terminated with exit code 1

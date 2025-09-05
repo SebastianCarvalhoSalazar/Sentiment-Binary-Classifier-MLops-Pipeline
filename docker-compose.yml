@@ -1,0 +1,70 @@
+# version: '3.8'
+
+services:
+  # MLflow Server
+  mlflow:
+    image: python:3.9-slim
+    container_name: mlflow_server
+    working_dir: /app
+    volumes:
+      - ./mlflow_data:/app/mlflow_data  # Nuevo volumen para SQLite
+      - ./models:/app/models
+    ports:
+      - "5000:5000"
+    command: >
+      bash -c "pip install mlflow==2.7.1 && 
+              mlflow server --host 0.0.0.0 --port 5000 
+              --backend-store-uri sqlite:///app/mlflow_data/mlflow.db 
+              --default-artifact-root file:///app/models"           
+    healthcheck:
+      disable: true
+      # test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      # test: ["CMD", "curl", "-f", "http://localhost:5000"]
+      # interval: 30s
+      # timeout: 10s
+      # retries: 3
+
+  # FastAPI Application
+  api:
+    build: .
+    container_name: sentiment_api
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+    volumes:
+      - ./models:/app/models
+      - ./data:/app/data
+      - ./src:/app/src
+      - ./app:/app/app
+    ports:
+      - "8000:8000"
+    command: python app/api.py
+    # depends_on:
+    #   mlflow:
+    #     condition: service_healthy
+    healthcheck:
+      disable: true
+      # test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      # interval: 30s
+      # timeout: 10s
+      # retries: 3
+
+  # Streamlit UI
+  streamlit:
+    build: .
+    container_name: sentiment_ui
+    environment:
+      - API_URL=http://api:8000
+    volumes:
+      - ./app:/app/app
+    ports:
+      - "8501:8501"
+    command: streamlit run app/streamlit_app.py --server.address 0.0.0.0
+    # depends_on:
+    #   api:
+    #     condition: service_healthy
+
+networks:
+  default:
+    name: sentiment_network

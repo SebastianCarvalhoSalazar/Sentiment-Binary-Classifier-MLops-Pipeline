@@ -1,0 +1,35 @@
+[2025-09-05T12:40:15.601-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: movie_sentiment_retrain.compare_and_promote manual__2025-09-05T17:29:31.077073+00:00 [queued]>
+[2025-09-05T12:40:15.603-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: movie_sentiment_retrain.compare_and_promote manual__2025-09-05T17:29:31.077073+00:00 [queued]>
+[2025-09-05T12:40:15.603-0500] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-05T12:40:15.607-0500] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): compare_and_promote> on 2025-09-05 17:29:31.077073+00:00
+[2025-09-05T12:40:15.611-0500] {standard_task_runner.py:57} INFO - Started process 25723 to run task
+[2025-09-05T12:40:15.614-0500] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'movie_sentiment_retrain', 'compare_and_promote', 'manual__2025-09-05T17:29:31.077073+00:00', '--job-id', '32', '--raw', '--subdir', 'DAGS_FOLDER/retrain_pipeline.py', '--cfg-path', '/var/folders/q5/0d_dg10s4m55__wc3fybh0280000gr/T/tmp2bibgsbe']
+[2025-09-05T12:40:15.615-0500] {standard_task_runner.py:85} INFO - Job 32: Subtask compare_and_promote
+[2025-09-05T12:40:15.630-0500] {task_command.py:416} INFO - Running <TaskInstance: movie_sentiment_retrain.compare_and_promote manual__2025-09-05T17:29:31.077073+00:00 [running]> on host SebastianSamay.local
+[2025-09-05T12:40:15.648-0500] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops-team' AIRFLOW_CTX_DAG_ID='movie_sentiment_retrain' AIRFLOW_CTX_TASK_ID='compare_and_promote' AIRFLOW_CTX_EXECUTION_DATE='2025-09-05T17:29:31.077073+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-05T17:29:31.077073+00:00'
+[2025-09-05T12:40:15.649-0500] {logging_mixin.py:154} INFO - Proyecto en: /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3
+[2025-09-05T12:40:15.651-0500] {logging_mixin.py:154} INFO - Comparando modelos:
+[2025-09-05T12:40:15.651-0500] {logging_mixin.py:154} INFO -   Nuevo: models/logistic_regression_bayesian.pkl
+[2025-09-05T12:40:15.651-0500] {logging_mixin.py:154} INFO -   Producción: models/production.pkl
+[2025-09-05T12:40:41.188-0500] {logging_mixin.py:154} INFO - Resultado: === Comparando Modelos ===
+Cargando modelo nuevo: models/logistic_regression_bayesian.pkl
+No hay modelo en producción. El nuevo modelo será promovido automáticamente.
+Preparando datos de evaluación...
+Dataset Cargado con Exito!
+                                                  review sentiment
+0      One of the other reviewers has mentioned that ...  positive
+1      A wonderful little production. <br /><br />The...  positive
+2      I thought this was a wonderful way to spend ti...  positive
+3      Basically there's a family where a little boy ...  negative
+4      Petter Mattei's "Love in the Time of Money" is...  positive
+...                                                  ...       ...
+49995  I thought this movie did a down right good job...  positive
+49996  Bad plot, bad dialogue, bad acting, idiotic di...  negative
+49997  I am a Catholic taught in parochial elementary...  negative
+49998  I'm going to have to disagree with the previou...  negative
+49999  No one expects the Star Trek
+[2025-09-05T12:40:41.189-0500] {logging_mixin.py:154} INFO - Error leyendo comparación: Expecting value: line 24 column 21 (char 493)
+[2025-09-05T12:40:41.189-0500] {python.py:194} INFO - Done. Returned value was: False
+[2025-09-05T12:40:41.196-0500] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=movie_sentiment_retrain, task_id=compare_and_promote, execution_date=20250905T172931, start_date=20250905T174015, end_date=20250905T174041
+[2025-09-05T12:40:41.234-0500] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-05T12:40:41.241-0500] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,11 @@
+{
+  "needs_retrain": true,
+  "drift_metrics": {
+    "dataset_drift": 0.5,
+    "prediction_drift": false,
+    "text_length_drift": true,
+    "confidence_drift": true,
+    "timestamp": "2025-09-05T13:00:03.414277"
+  },
+  "timestamp": "2025-09-05T13:00:04.227680"
+}

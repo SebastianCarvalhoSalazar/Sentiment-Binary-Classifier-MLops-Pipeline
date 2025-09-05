@@ -1,0 +1,14 @@
+# Configuración personalizada para Movie Sentiment MLOps
+
+# Desactivar ejemplos
+load_examples = False
+
+# Configurar executor (para desarrollo usamos Sequential)
+executor = SequentialExecutor
+
+# Configurar paths
+dags_folder = /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/airflow/dags
+base_log_folder = /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/airflow/logs
+
+# Configurar scheduler
+scheduler_heartbeat_sec = 30

@@ -1,0 +1,47 @@
+[2025-09-04T22:30:37.905-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: movie_sentiment_retrain.check_drift manual__2025-09-05T03:28:39.624602+00:00 [queued]>
+[2025-09-04T22:30:37.908-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: movie_sentiment_retrain.check_drift manual__2025-09-05T03:28:39.624602+00:00 [queued]>
+[2025-09-04T22:30:37.908-0500] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-04T22:30:37.913-0500] {taskinstance.py:1382} INFO - Executing <Task(BranchPythonOperator): check_drift> on 2025-09-05 03:28:39.624602+00:00
+[2025-09-04T22:30:37.917-0500] {standard_task_runner.py:57} INFO - Started process 43235 to run task
+[2025-09-04T22:30:37.920-0500] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'movie_sentiment_retrain', 'check_drift', 'manual__2025-09-05T03:28:39.624602+00:00', '--job-id', '155', '--raw', '--subdir', 'DAGS_FOLDER/retrain_pipeline.py', '--cfg-path', '/var/folders/q5/0d_dg10s4m55__wc3fybh0280000gr/T/tmptyyhac9_']
+[2025-09-04T22:30:37.921-0500] {standard_task_runner.py:85} INFO - Job 155: Subtask check_drift
+[2025-09-04T22:30:37.938-0500] {task_command.py:416} INFO - Running <TaskInstance: movie_sentiment_retrain.check_drift manual__2025-09-05T03:28:39.624602+00:00 [running]> on host SebastianSamay.local
+[2025-09-04T22:30:37.962-0500] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops-team' AIRFLOW_CTX_DAG_ID='movie_sentiment_retrain' AIRFLOW_CTX_TASK_ID='check_drift' AIRFLOW_CTX_EXECUTION_DATE='2025-09-05T03:28:39.624602+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-05T03:28:39.624602+00:00'
+[2025-09-04T22:30:37.967-0500] {logging_mixin.py:154} INFO - ==================================================
+[2025-09-04T22:30:37.967-0500] {logging_mixin.py:154} INFO - VERIFICACIÓN DE DRIFT
+[2025-09-04T22:30:37.967-0500] {logging_mixin.py:154} INFO - ==================================================
+[2025-09-04T22:30:37.967-0500] {logging_mixin.py:154} INFO - Proyecto en: /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3
+[2025-09-04T22:30:37.967-0500] {logging_mixin.py:154} INFO - DRIFT_THRESHOLD: 0.15
+[2025-09-04T22:30:39.708-0500] {logging_mixin.py:154} INFO - 
+--- Resultado del subprocess ---
+[2025-09-04T22:30:39.709-0500] {logging_mixin.py:154} INFO - Código de retorno: 0
+[2025-09-04T22:30:39.709-0500] {logging_mixin.py:154} INFO - Stdout: Use Airflow!
+ERROR: No model found
+[2025-09-04T22:30:39.709-0500] {logging_mixin.py:154} INFO - Stderr: /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/pydantic/_internal/_fields.py:128: UserWarning: Field "model_server_url" has conflict with protected namespace "model_".
+
+You may be able to resolve this warning by setting `model_config['protected_namespaces'] = ()`.
+  warnings.warn(
+/Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3/venv_mlops/lib/python3.9/site-packages/pydantic/_internal/_con
+[2025-09-04T22:30:39.709-0500] {logging_mixin.py:154} INFO - 
+--- Contenido del JSON ---
+[2025-09-04T22:30:39.710-0500] {logging_mixin.py:154} INFO - {
+  "needs_retrain": true,
+  "drift_metrics": {
+    "dataset_drift": 0.5,
+    "prediction_drift": false,
+    "text_length_drift": true,
+    "confidence_drift": true,
+    "timestamp": "2025-09-04T22:13
+[2025-09-04T22:30:39.710-0500] {logging_mixin.py:154} INFO - 
+--- Análisis del Drift ---
+[2025-09-04T22:30:39.710-0500] {logging_mixin.py:154} INFO - needs_retrain: True
+[2025-09-04T22:30:39.710-0500] {logging_mixin.py:154} INFO - dataset_drift: 0.5
+[2025-09-04T22:30:39.717-0500] {logging_mixin.py:154} INFO - 
+✅ DECISIÓN: Drift detectado - REENTRENAMIENTO
+[2025-09-04T22:30:39.718-0500] {python.py:194} INFO - Done. Returned value was: retrain_model
+[2025-09-04T22:30:39.718-0500] {python.py:227} INFO - Branch callable return retrain_model
+[2025-09-04T22:30:39.718-0500] {skipmixin.py:173} INFO - Following branch retrain_model
+[2025-09-04T22:30:39.721-0500] {skipmixin.py:239} INFO - Skipping tasks [('skip_retrain', -1)]
+[2025-09-04T22:30:39.731-0500] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=movie_sentiment_retrain, task_id=check_drift, execution_date=20250905T032839, start_date=20250905T033037, end_date=20250905T033039
+[2025-09-04T22:30:39.773-0500] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-04T22:30:39.785-0500] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check

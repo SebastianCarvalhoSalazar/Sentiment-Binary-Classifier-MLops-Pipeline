@@ -1,0 +1,43 @@
+[2025-09-04T19:22:30.231-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: movie_sentiment_retrain.notify_results scheduled__2025-09-04T00:00:00+00:00 [queued]>
+[2025-09-04T19:22:30.233-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: movie_sentiment_retrain.notify_results scheduled__2025-09-04T00:00:00+00:00 [queued]>
+[2025-09-04T19:22:30.233-0500] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-04T19:22:30.239-0500] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): notify_results> on 2025-09-04 00:00:00+00:00
+[2025-09-04T19:22:30.243-0500] {standard_task_runner.py:57} INFO - Started process 22867 to run task
+[2025-09-04T19:22:30.246-0500] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'movie_sentiment_retrain', 'notify_results', 'scheduled__2025-09-04T00:00:00+00:00', '--job-id', '50', '--raw', '--subdir', 'DAGS_FOLDER/retrain_pipeline.py', '--cfg-path', '/var/folders/q5/0d_dg10s4m55__wc3fybh0280000gr/T/tmpaz5cq9nn']
+[2025-09-04T19:22:30.247-0500] {standard_task_runner.py:85} INFO - Job 50: Subtask notify_results
+[2025-09-04T19:22:30.264-0500] {task_command.py:416} INFO - Running <TaskInstance: movie_sentiment_retrain.notify_results scheduled__2025-09-04T00:00:00+00:00 [running]> on host SebastianSamay.local
+[2025-09-04T19:22:30.287-0500] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops-team' AIRFLOW_CTX_DAG_ID='movie_sentiment_retrain' AIRFLOW_CTX_TASK_ID='notify_results' AIRFLOW_CTX_EXECUTION_DATE='2025-09-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-04T00:00:00+00:00'
+[2025-09-04T19:22:30.291-0500] {logging_mixin.py:154} INFO - ==================================================
+[2025-09-04T19:22:30.291-0500] {logging_mixin.py:154} INFO - 📧 RESUMEN DEL PIPELINE
+[2025-09-04T19:22:30.291-0500] {logging_mixin.py:154} INFO - ==================================================
+[2025-09-04T19:22:30.291-0500] {logging_mixin.py:154} INFO - Fecha: 2025-09-04 19:22:30.291789
+[2025-09-04T19:22:30.292-0500] {logging_mixin.py:154} INFO - Drift detectado: None
+[2025-09-04T19:22:30.292-0500] {logging_mixin.py:154} INFO - No se entrenó nuevo modelo
+[2025-09-04T19:22:30.292-0500] {logging_mixin.py:154} INFO - ==================================================
+[2025-09-04T19:22:30.292-0500] {python.py:194} INFO - Done. Returned value was: True
+[2025-09-04T19:22:30.297-0500] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=movie_sentiment_retrain, task_id=notify_results, execution_date=20250904T000000, start_date=20250905T002230, end_date=20250905T002230
+[2025-09-04T19:22:30.341-0500] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-04T19:22:30.347-0500] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-09-04T22:50:44.168-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: movie_sentiment_retrain.notify_results scheduled__2025-09-04T00:00:00+00:00 [queued]>
+[2025-09-04T22:50:44.172-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: movie_sentiment_retrain.notify_results scheduled__2025-09-04T00:00:00+00:00 [queued]>
+[2025-09-04T22:50:44.172-0500] {taskinstance.py:1361} INFO - Starting attempt 1 of 2
+[2025-09-04T22:50:44.176-0500] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): notify_results> on 2025-09-04 00:00:00+00:00
+[2025-09-04T22:50:44.181-0500] {standard_task_runner.py:57} INFO - Started process 44927 to run task
+[2025-09-04T22:50:44.184-0500] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'movie_sentiment_retrain', 'notify_results', 'scheduled__2025-09-04T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/retrain_pipeline.py', '--cfg-path', '/var/folders/q5/0d_dg10s4m55__wc3fybh0280000gr/T/tmp1bs5ju29']
+[2025-09-04T22:50:44.185-0500] {standard_task_runner.py:85} INFO - Job 9: Subtask notify_results
+[2025-09-04T22:50:44.203-0500] {task_command.py:416} INFO - Running <TaskInstance: movie_sentiment_retrain.notify_results scheduled__2025-09-04T00:00:00+00:00 [running]> on host SebastianSamay.local
+[2025-09-04T22:50:44.222-0500] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops-team' AIRFLOW_CTX_DAG_ID='movie_sentiment_retrain' AIRFLOW_CTX_TASK_ID='notify_results' AIRFLOW_CTX_EXECUTION_DATE='2025-09-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-04T00:00:00+00:00'
+[2025-09-04T22:50:44.223-0500] {logging_mixin.py:154} INFO - ==================================================
+[2025-09-04T22:50:44.223-0500] {logging_mixin.py:154} INFO - 📊 RESUMEN DEL PIPELINE
+[2025-09-04T22:50:44.223-0500] {logging_mixin.py:154} INFO - ==================================================
+[2025-09-04T22:50:44.223-0500] {logging_mixin.py:154} INFO - Fecha: 2025-09-04 22:50:44.223500
+[2025-09-04T22:50:44.226-0500] {logging_mixin.py:154} INFO - Drift detectado: Sí
+[2025-09-04T22:50:44.226-0500] {logging_mixin.py:154} INFO -   - Dataset drift: 0.5
+[2025-09-04T22:50:44.227-0500] {logging_mixin.py:154} INFO - 
+📦 Nuevo modelo: logistic_regression_bayesian.pkl
+[2025-09-04T22:50:44.227-0500] {logging_mixin.py:154} INFO - ⚠️ Error leyendo comparación: Expecting value: line 24 column 21 (char 491)
+[2025-09-04T22:50:44.227-0500] {logging_mixin.py:154} INFO - ==================================================
+[2025-09-04T22:50:44.228-0500] {python.py:194} INFO - Done. Returned value was: True
+[2025-09-04T22:50:44.232-0500] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=movie_sentiment_retrain, task_id=notify_results, execution_date=20250904T000000, start_date=20250905T035044, end_date=20250905T035044
+[2025-09-04T22:50:44.237-0500] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-04T22:50:44.243-0500] {taskinstance.py:2778} INFO - 0 downstream tasks scheduled from follow-on schedule check

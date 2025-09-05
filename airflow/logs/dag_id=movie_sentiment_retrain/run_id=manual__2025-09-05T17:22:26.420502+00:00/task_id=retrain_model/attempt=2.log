@@ -1,0 +1,38 @@
+[2025-09-05T12:35:05.489-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T17:22:26.420502+00:00 [queued]>
+[2025-09-05T12:35:05.492-0500] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T17:22:26.420502+00:00 [queued]>
+[2025-09-05T12:35:05.492-0500] {taskinstance.py:1361} INFO - Starting attempt 2 of 2
+[2025-09-05T12:35:05.497-0500] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): retrain_model> on 2025-09-05 17:22:26.420502+00:00
+[2025-09-05T12:35:05.501-0500] {standard_task_runner.py:57} INFO - Started process 25477 to run task
+[2025-09-05T12:35:05.504-0500] {standard_task_runner.py:84} INFO - Running: ['airflow', 'tasks', 'run', 'movie_sentiment_retrain', 'retrain_model', 'manual__2025-09-05T17:22:26.420502+00:00', '--job-id', '31', '--raw', '--subdir', 'DAGS_FOLDER/retrain_pipeline.py', '--cfg-path', '/var/folders/q5/0d_dg10s4m55__wc3fybh0280000gr/T/tmpw823hcw8']
+[2025-09-05T12:35:05.505-0500] {standard_task_runner.py:85} INFO - Job 31: Subtask retrain_model
+[2025-09-05T12:35:05.520-0500] {task_command.py:416} INFO - Running <TaskInstance: movie_sentiment_retrain.retrain_model manual__2025-09-05T17:22:26.420502+00:00 [running]> on host SebastianSamay.local
+[2025-09-05T12:35:05.538-0500] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops-team' AIRFLOW_CTX_DAG_ID='movie_sentiment_retrain' AIRFLOW_CTX_TASK_ID='retrain_model' AIRFLOW_CTX_EXECUTION_DATE='2025-09-05T17:22:26.420502+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-05T17:22:26.420502+00:00'
+[2025-09-05T12:35:05.539-0500] {logging_mixin.py:154} INFO - Proyecto en: /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3
+[2025-09-05T12:35:05.539-0500] {logging_mixin.py:154} INFO - Directorio de trabajo actual: /Users/sebatiancarvalho/Desktop/Repositorios/SCSProjects/movie-sentiment-mlops-V3
+[2025-09-05T12:35:05.540-0500] {logging_mixin.py:154} INFO - Iniciando reentrenamiento: logistic_regression_bayesian.pkl
+[2025-09-05T12:40:09.057-0500] {logging_mixin.py:154} INFO - Código de retorno: 0
+[2025-09-05T12:40:09.059-0500] {logging_mixin.py:154} INFO - Salida: Dataset Cargado con Exito!
+                                                  review sentiment
+0      One of the other reviewers has mentioned that ...  positive
+1      A wonderful little production. <br /><br />The...  positive
+2      I thought this was a wonderful way to spend ti...  positive
+3      Basically there's a family where a little boy ...  negative
+4      Petter Mattei's "Love in the Time of Money" is...  positive
+...                                                  ...       ...
+49995  I thought this movie did a down right good job...  positive
+49996  Bad plot, bad dialogue, bad acting, idiotic di...  negative
+49997  I am a Catholic taught in parochial elementary...  negative
+49998  I'm going to have to disagree with the previou...  negative
+49999  No one expects the Star Trek movies to be high...  negative
+
+[50000 rows x 2 columns]
+Limpiando texto...
+Datos de entrenamiento: 40000 muestras
+Datos de prueba: 10000 muestras
+Balance de clases en train: {1: 20000, 0: 20000}
+Inic
+[2025-09-05T12:40:09.060-0500] {logging_mixin.py:154} INFO - ✅ Modelo renombrado a: logistic_regression_bayesian.pkl
+[2025-09-05T12:40:09.068-0500] {python.py:194} INFO - Done. Returned value was: logistic_regression_bayesian.pkl
+[2025-09-05T12:40:09.072-0500] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=movie_sentiment_retrain, task_id=retrain_model, execution_date=20250905T172226, start_date=20250905T173505, end_date=20250905T174009
+[2025-09-05T12:40:09.110-0500] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2025-09-05T12:40:09.120-0500] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check
