@@ -353,7 +353,8 @@ El pipeline de reentrenamiento automático implementado en este proyecto detecta
 ## Mejora Recomendada: Promoción de Modelos con MLflow Registry
 Actualmente la promoción de modelos se realiza copiando archivos .pkl directamente, lo cual es funcional pero carece de versionado y trazabilidad. Se recomienda migrar al MLflow Model Registry que ya está instalado en el proyecto, permitiendo transiciones controladas entre estados (Experimental → Staging → Production), versionado semántico, metadata detallada de cada modelo, y rollback instantáneo si falla en producción. La implementación requeriría modificar train_bayesian.py para registrar modelos con mlflow.register_model(), actualizar model_comparator.py para usar client.transition_model_version_stage() al promover, y cambiar api.py para cargar desde el registry con mlflow.pyfunc.load_model("models:/movie_sentiment_classifier/Production").
 
-**Desarrollado para aprender MLOps end-to-end** 
+---
 
-*Desde el entrenamiento hasta producción con monitoreo y reentrenamiento automático.
+**Desarrollado para aprender MLOps end-to-end** 
+**Desde el entrenamiento hasta producción con monitoreo y reentrenamiento automático.
 
