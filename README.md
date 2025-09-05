@@ -357,5 +357,5 @@ Actualmente la promoción de modelos se realiza copiando archivos .pkl directame
 
 **Desarrollado para aprender MLOps end-to-end**
 
-**Desde el entrenamiento hasta producción con monitoreo y reentrenamiento automático.
+**Desde el entrenamiento hasta producción con monitoreo y reentrenamiento automático.**
 
