@@ -176,8 +176,6 @@ movie-sentiment-mlops/
 ├── monitoring/
 │   ├── drift_monitor.py      # Monitor de drift con Evidently
 │   └── setup_monitoring.py   # Configuración inicial
-├── dags/
-│   └── retrain_pipeline.py   # DAG de Airflow
 ├── airflow/                  # Directorio de Airflow (generado)
 │   ├── dags/                # DAGs de Airflow
 │   ├── logs/                # Logs de ejecución
