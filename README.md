@@ -316,6 +316,7 @@ lsof -i :5000  # MLflow
 
 # Terminar proceso
 kill -9 $(lsof -ti :8080)
+pkill -f "airflow"
 ```
 
 ## Próximos Pasos
