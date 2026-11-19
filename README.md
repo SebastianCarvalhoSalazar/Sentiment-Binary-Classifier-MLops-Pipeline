@@ -179,7 +179,7 @@ movie-sentiment-mlops/
 ├── airflow/                  # Directorio de Airflow (generado)
 │   ├── dags/                # DAGs de Airflow
 │   ├── logs/                # Logs de ejecución
-│   └── airflow.db           # Base de datos SQLite
+│   └── airflow.db           # Base de datos SQLite (generada, no versionada)
 ├── data/                     # Datasets
 ├── models/                   # Modelos entrenados
 │   ├── production.pkl       # Modelo en producción
